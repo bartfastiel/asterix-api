@@ -1,8 +1,6 @@
 package com.example.asterixapi;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class AsterixController {
     @GetMapping("/characters")
     List<Character> findAllCharacters() {
         return characterRepo.findAll();
+    }
+
+    @PostMapping("/characters")
+    Character addCharacter(@RequestBody Character newCharacter) {
+        return characterRepo.save(newCharacter);
     }
 }
