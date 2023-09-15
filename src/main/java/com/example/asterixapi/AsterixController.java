@@ -23,4 +23,12 @@ public class AsterixController {
     Character addCharacter(@RequestBody Character newCharacter) {
         return characterRepo.save(newCharacter);
     }
+
+    @PutMapping("/characters/{characterId}")
+    Character insertOrUpdateCharacter(@PathVariable String characterId, @RequestBody Character newCharacter) {
+        if (!characterId.equals(newCharacter.id())) {
+            throw new IllegalArgumentException("Character ID does not match");
+        }
+        return characterRepo.save(newCharacter);
+    }
 }
