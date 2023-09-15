@@ -31,4 +31,9 @@ public class AsterixController {
         }
         return characterRepo.save(newCharacter);
     }
+
+    @DeleteMapping("/characters/{characterId}")
+    void deleteCharacter(@PathVariable String characterId) {
+        characterRepo.deleteById(characterId);
+    }
 }
